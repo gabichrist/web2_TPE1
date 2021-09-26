@@ -6,7 +6,8 @@
     <ul>
         {foreach $books as $book}
         <li>
-            <a href="libro/detalle">Ver más</a>;
+            <p> {$book->titulo} ({$book->nombre}, {$book->apellido})- &nbsp; <a href="libro/detalle/{$book->id_libro}"> Ver más</a>; </p>
+            
         </li>
         {/foreach}
     </ul>

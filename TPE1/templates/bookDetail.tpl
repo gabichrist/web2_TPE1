@@ -3,13 +3,10 @@
 <h1>{$title}</h1>
 
 <div>
-    <ul>
-        <li>
-            {$book->titulo}  {$book->sinopsis}  {$book->genero}  {$book->anio}
-        </li>
-    </ul>
+    <h2>{$book->titulo} - {$book->nombre}, {$book->apellido}</h2>
+    <p>{$book->sinopsis}</p>
+    <p>{$book->genero} - {$book->anio}</p>
 </div>
-
 
 
 {include 'templates/footer.tpl'}

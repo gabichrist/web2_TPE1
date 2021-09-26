@@ -1,6 +1,6 @@
 <?php
 
-require_once('libs/Smarty.class.php');
+require_once "libs/smarty-3.1.39/libs/Smarty.class.php";
 
 class bookView
 {
@@ -8,6 +8,7 @@ class bookView
     public function showBooks($books)
     {
         $smarty = new Smarty();
+        $smarty->assign('BASE_URL', BASE_URL);
         $smarty->assign('title', 'Lista de Libros');
         $smarty->assign('books', $books);
 
@@ -17,7 +18,10 @@ class bookView
     public function showBook($book)
     {
         $smarty = new Smarty();
+        $smarty->assign('BASE_URL', BASE_URL);
         $smarty->assign('title', 'Información Detallada del Libro');
         $smarty->assign('book', $book);
+
+        $smarty->display('templates/bookDetail.tpl');
     }
 }
