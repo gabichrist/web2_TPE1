@@ -2,15 +2,15 @@
 
 <h1>{$title}</h1>
 
-<div>
-    <ul>
-        {foreach $writers as $writer}
-        <li>
-            <a href="escritores/libros">Ver Libros</a>;
-        </li>
-        {/foreach}
-    </ul>
-</div>
+
+<ul>
+    {foreach from=$writers item=$writer}
+    <li>
+        <a href="view/{$writer->id_escritor}">{$writer->nombre} {$writer->apellido}</a>
+    </li>
+    {/foreach}
+</ul>
+
 
 
 {include 'templates/footer.tpl'}

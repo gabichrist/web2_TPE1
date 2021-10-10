@@ -1,7 +1,7 @@
 <?php
 
-require_once "mvc/bookModel.php";
-require_once "mvc/bookView.php";
+require_once "./mvc/model/bookModel.php" ;
+require_once "./mvc/view/bookView.php";
 
 class BookController
 {

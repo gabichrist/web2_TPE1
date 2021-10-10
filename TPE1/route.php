@@ -1,30 +1,54 @@
 <?php
+//require_once "./mvc/controller/bookController.php";
+require_once "./controller/writerController.php"; 
 
-require_once "mvc/bookController.php";
-
-define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 // lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'home'; // acción por defecto si no envían
+    $action = 'writers'; // acción por defecto si no envían
 }
 
 $params = explode('/', $action);
-$bookController = new BookController();
+//$bookController = new BookController();
+$writerController = new WriterController();
 
 switch ($params[0]) {
-    case 'home':
-        $bookController->getBooks();
+
+    case 'writers':
+
+        $writerController->showAllWriters();
+        //$bookController->getBooks();
         // showHome();
         break;
 
-    case 'libro':
-        if ($params[1] == 'detalle')
-            $bookController->getBook($params[2]);
-        else
-            $bookController->getBooks();
+    case 'view':
+        $writerController->viewWriter($params[1]);
         break;
+    
+    case 'create':
+        $writerController->createWriter();
+        break;
+
+    case 'delete':
+        $writerController->deleteWriter($params[1]);
+        break;
+
+    case 'update':
+        $writerController->updateWriter($params[1]);
+        break;
+    
+    case 'admin':
+        $writerController->showAllWritersAdmin();
+        break;
+
+    //case 'libro':
+        //if ($params[1] == 'detalle')
+           // $bookController->getBook($params[2]);
+        //else
+            //$bookController->getBooks();
+        //break;
         // case 'delete':
         //     break;
         // case 'update':
