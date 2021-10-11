@@ -7,7 +7,7 @@
     {foreach from=$writers item=$writer} 
     <li>
         <a href="view/{$writer->id_escritor}">{$writer->nombre} {$writer->apellido}</a>
-        <a class="btn btn-success" href="update/{$writer->id_escritor}">Editar </a>
+        <a class="btn btn-success" href="/update/{$writer->id_escritor}">Editar </a>
         <a class="btn btn-danger" href= "delete/{$writer->id_escritor}">Borrar</a>
     </li>
     {/foreach}

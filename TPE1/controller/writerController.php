@@ -21,14 +21,17 @@ class WriterController{
     function viewWriter($id){
         $writer = $this->model->getWriter($id);
         $this->view->viewWriter($writer);
-
     }
 
     function createWriter(){
         //funcion que comprueba si escritor puede o no ingresarse para que no se repita.
 
-        $this->model->insertWriter($_POST['name'],$_POST['last-name'],$_POST['born'],$_POST['biography']);
+        $this->model->insertWriter($_POST['name'],$_POST['lastName'],$_POST['born'],$_POST['biography']);
         // insertWiter es una funcion que esta en model le pide a db
+        // $this->view->showAddWriter();
+    }
+
+    function addWriter(){
         $this->view->showAddWriter();
     }
 

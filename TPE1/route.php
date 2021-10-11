@@ -25,10 +25,11 @@ switch ($params[0]) {
 
     case 'view':
         $writerController->viewWriter($params[1]);
+        $writerController->showAllWriters();
         break;
     
     case 'create':
-        $writerController->createWriter();
+        $writerController->addWriter();
         break;
 
     case 'delete':
