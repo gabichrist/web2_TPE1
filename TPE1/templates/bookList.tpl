@@ -1,16 +1,16 @@
 {include 'templates/header.tpl'}
 
-<h1>{$title}</h1>
+<h1 class="text-uppercase fw-light container" style="width: 60rem">{$title}</h1>
 
-<div>
-    <ul>
+<div class="card container" style="width: 60rem" >
+    <ul class="list-group list-group-flush">
         {foreach from=$books item=$book}
-        <li>
-            <p> {$book->titulo} ({$book->nombre}, {$book->apellido}) &nbsp; <a href="libros/detalle/{$book->id_libro}">
-                    Ver más</a>;
+        <li class="list-group-item" >
+            <p > {$book->titulo} ({$book->nombre}, {$book->apellido}) <a class="btn btn-link btn-sm" href="libros/detalle/{$book->id_libro}">
+                    Ver más</a>
                 {if $isLogged}
-                <button> <a href='libros/editar/{$book->id_libro}'>Editar </a></button>
-                <button> <a href="libros/eliminar/{$book->id_libro}">Eliminar</a> </button>
+                <button class="btn"> <a class="btn btn-warning " href='libros/editar/{$book->id_libro}'>Editar </a></button>
+                <button class="btn"> <a class="btn btn-danger "href="libros/eliminar/{$book->id_libro}">Eliminar</a> </button>
                 {/if}
             </p>
 
@@ -20,25 +20,25 @@
 </div>
 
 {if $isLogged}
-<div>
-    <h2>Agregar Libro</h2>
-    <form action="libros/agregar" method="POST">
-        <label>Titulo</label>
-        <input name="titulo" placeholder="Titulo">
-        <label>Sinopsis</label>
-        <input name="sinopsis" placeholder="Sinopsis">
-        <label>Género</label>
-        <input name="genero" placeholder="Genero">
-        <label>Año</label>
-        <input name="anio" type="number" placeholder="Año">
-        <label for="escritor">Escritor</label>
-        <select name="escritor">
+<div class="container" style="width: 60rem">
+    <h2 class="text-primary m-3">Agregar Libro</h2>
+    <form class="mb-3" action="libros/agregar" method="POST" style="width: 30rem">
+        <label class="form-label">Titulo</label>
+        <input class="form-control"  name="titulo" placeholder="Título">
+        <label class="form-label">Sinopsis</label>
+        <input class="form-control" name="sinopsis" placeholder="Sinopsis">
+        <label class="form-label">Género</label>
+        <input class="form-control" name="genero" placeholder="Genero">
+        <label class="form-label">Año</label>
+        <input class="form-control"  name="anio" type="number" placeholder="Año">
+        <label class="form-label" for="escritor">Escritor</label>
+        <select class="form-select" name="escritor">
                 {foreach from=$writers item=$writer}
                     <option value="{$writer->id_escritor}">{$writer->nombre}, {$writer->apellido} </option>
                 {/foreach}
         </select>
 
-        <button type="submit">Agregar</button>
+        <button class="btn btn-primary m-2" type="submit" >Agregar</button>
 
     </form>
 </div>
