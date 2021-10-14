@@ -37,6 +37,7 @@ class WriterController
 
     function editWriterForm($id)
     {
+        $this->authHelper->checkLoggedIn();
         $writer = $this->model->getWriter($id);
         $this->view->editWriter($writer);
     }

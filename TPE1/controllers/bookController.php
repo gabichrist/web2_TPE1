@@ -43,6 +43,7 @@ class BookController
 
     public function editBookForm($id)
     {
+        $this->authHelper->checkLoggedIn();
         $book = $this->model->getBook($id);
         $this->view->editBook($book);
     }

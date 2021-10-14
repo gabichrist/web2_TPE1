@@ -25,7 +25,11 @@ class LoginController
 
     public function showLogin()
     {
-        $this->view->showLogin();
+        $isLogged = $this->authHelper->isLogged();
+        if ($isLogged)
+            $this->view->showHome();
+        else
+            $this->view->showLogin();
     }
 
     public function verifyLogin()
