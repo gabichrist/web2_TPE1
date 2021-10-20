@@ -34,11 +34,16 @@ class BookController
     public function editBook($id)
     {
         $this->authHelper->checkLoggedIn();
-        $titulo = $_POST['titulo'];
-        $sinopsis = $_POST['sinopsis'];
-        $genero = $_POST['genero'];
-        $anio = $_POST['anio'];
-        $this->model->editBook($id, $titulo, $sinopsis, $genero, $anio);
+        if (
+            isset($_POST['titulo']) && isset($_POST['sinopsis']) && isset($_POST['genero'])
+            && isset($_POST['anio'])
+        ) {
+            $titulo = $_POST['titulo'];
+            $sinopsis = $_POST['sinopsis'];
+            $genero = $_POST['genero'];
+            $anio = $_POST['anio'];
+            $this->model->editBook($id, $titulo, $sinopsis, $genero, $anio);
+        }
     }
 
     public function editBookForm($id)
