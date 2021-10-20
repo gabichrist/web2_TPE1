@@ -27,11 +27,17 @@ class WriterController
     function editWriter($id)
     {
         $this->authHelper->checkLoggedIn();
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $fecha_nacimiento = $_POST['fecha_nacimiento'];
-        $biografia = $_POST['biografia'];
-        $this->model->editWriter($id, $nombre, $apellido, $fecha_nacimiento, $biografia);
+        if (
+            isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['fecha_nacimiento'])
+            && isset($_POST['biografia'])
+        ) {
+
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $fecha_nacimiento = $_POST['fecha_nacimiento'];
+            $biografia = $_POST['biografia'];
+            $this->model->editWriter($id, $nombre, $apellido, $fecha_nacimiento, $biografia);
+        }
         header("Location: " . BASE_URL . "escritores");
     }
 
