@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2021 a las 01:12:15
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 19-11-2021 a las 15:02:27
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `libreria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `comentario` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `puntuacion` int(1) NOT NULL,
+  `id_libro` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `comentario`, `puntuacion`, `id_libro`, `id_usuario`) VALUES
+(1, 'sdgdsgsdgsgs', 3, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -82,19 +103,30 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `mail` varchar(100) NOT NULL,
-  `clave` varchar(100) NOT NULL
+  `clave` varchar(100) NOT NULL,
+  `rol` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `mail`, `clave`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2a$12$PwKMSpX281sqINDPztJ0I.Jpp8awR3v2UKp/jn85PpC6TSfpMW82C');
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `mail`, `clave`, `rol`) VALUES
+(1, 'admin', 'admin@gmail.com', '$2a$12$PwKMSpX281sqINDPztJ0I.Jpp8awR3v2UKp/jn85PpC6TSfpMW82C', ''),
+(2, 'test', 'test@test.com', '$2y$10$laMU9ahnxaScUyWkT5BuUO4dNu1PNXatCT.4geH.O5VTWjvIh7R/K', 'no-admin'),
+(3, 'test', 'test@test.com', '$2y$10$ArtZBDz/OFhBTP.hW1.Q8e4E5VxOR4Cpw1NQgLcW.71jnqyAbSzTO', 'no-admin'),
+(4, 'test2', 'test@test.com', '$2y$10$tTiH42Al.hsFsGmYER3D5ebfuDVlYCD1yVx1lX9RQJLiEk3n7kOJG', 'no-admin'),
+(5, 'test4', 'test@test.com', '$2y$10$6c1zXXNnbHWoJa7mNFVnKOYdOvC1pwr5gEgjiokdvo90QzYloy4gC', 'no-admin');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`);
 
 --
 -- Indices de la tabla `escritores`
@@ -120,6 +152,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `escritores`
 --
 ALTER TABLE `escritores`
@@ -135,7 +173,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
