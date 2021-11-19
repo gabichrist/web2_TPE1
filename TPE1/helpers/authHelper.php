@@ -11,6 +11,7 @@ class AuthHelper
         session_start();
         $_SESSION['ID_USER'] = $user->id_usuario;
         $_SESSION['EMAIL'] = $user->mail;
+        $_SESSION['ROL'] = $user->rol;
     }
 
     public function logout()
@@ -25,7 +26,7 @@ class AuthHelper
         if (!isset($_SESSION))
             session_start();
         if (!isset($_SESSION['ID_USER'])) {
-            header('Location: ' . BASE_URL . 'admin');
+            header('Location: ' . BASE_URL . 'login');
             die();
         }
     }
@@ -35,6 +36,15 @@ class AuthHelper
         if (!isset($_SESSION))
             session_start();
         if (isset($_SESSION['ID_USER'])) return true;
+        return false;
+    }
+
+    public function isAdmin()
+    {
+        if (!isset($_SESSION))
+            session_start();
+        if (isset($_SESSION['ROL']))
+            return $_SESSION['ROL'] == 'admin';
         return false;
     }
 }

@@ -8,7 +8,7 @@
         <li class="list-group-item" >
             <p > {$book->titulo} ({$book->nombre}, {$book->apellido}) <a class="btn btn-link btn-sm" href="libros/detalle/{$book->id_libro}">
                     Ver más</a>
-                {if $isLogged}
+                {if $isLogged && $isAdmin}
                 <button class="btn"> <a class="btn btn-warning " href='libros/editar/{$book->id_libro}'>Editar </a></button>
                 <button class="btn"> <a class="btn btn-danger "href="libros/eliminar/{$book->id_libro}">Eliminar</a> </button>
                 {/if}
@@ -19,7 +19,7 @@
     </ul>
 </div>
 
-{if $isLogged}
+{if $isLogged && $isAdmin}
 <div class="container" style="width: 60rem">
     <h2 class="text-primary m-3">Agregar Libro</h2>
     <form class="mb-3" action="libros/agregar" method="POST" style="width: 30rem">

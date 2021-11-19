@@ -73,7 +73,7 @@ switch ($params[0]) {
         else
             $writerController->getWriters();
         break;
-    case 'admin':
+    case 'login':
         $userController->showLogin();
         break;
     case 'verify':

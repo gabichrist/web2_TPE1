@@ -8,7 +8,7 @@
         <li class="list-group-item">
             <p> {$writer->nombre}, {$writer->apellido} ({$writer->fecha_nacimiento}), {$writer->biografia}- &nbsp;
              <a class="btn btn-link btn-sm" href="escritores/libros/{$writer->id_escritor}">Ver Libros</a>
-                {if $isLogged}
+                {if $isLogged && $isAdmin}
                     <button class="btn"> <a class="btn btn-danger" href='escritores/editar/{$writer->id_escritor}'>Editar </a></button>
                     <button class="btn"> <a class="btn btn-warning" href="escritores/eliminar/{$writer->id_escritor}">Eliminar</a> </button>
                 {/if}
@@ -18,7 +18,7 @@
     </ul>
 </div>
 
-{if $isLogged}
+{if $isLogged && $isAdmin}
 <div class="container" style="width: 60rem">
     <h2 class="text-primary m-3">Agregar Escritor</h2>
         <form style="width: 30rem" class="mb-3" action="escritores/agregar" method="POST">

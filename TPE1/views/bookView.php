@@ -12,16 +12,16 @@ class bookView
     {
         $this->authHelper = new AuthHelper();
         $isLogged = $this->authHelper->isLogged();
+        $isAdmin = $this->authHelper->isAdmin();
         $this->smarty = new Smarty();
         $this->smarty->assign('isLogged', $isLogged);
+        $this->smarty->assign('isAdmin', $isAdmin);
     }
 
 
     public function showBooks($books, $writers)
     {
-        $isLogged = $this->authHelper->isLogged();
         $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('isLogged', $isLogged);
         $this->smarty->assign('title', 'Lista de Libros');
         $this->smarty->assign('writers', $writers);
         $this->smarty->assign('books', $books);
