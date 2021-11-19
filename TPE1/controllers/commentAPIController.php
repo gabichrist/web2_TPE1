@@ -9,13 +9,16 @@ class commentAPIController
     private $model;
     private $view;
     private $authHelper;
+    private $modelBook;
 
     public function __construct()
     {
         // $this->authHelper = new AuthHelper();
         $this->model = new commentModel();
         $this->view = new apiView();
+        $this->modelBook = new bookModel();
     }
+
 
     public function getCommentsByBook($params = null)
     {
@@ -55,6 +58,18 @@ class commentAPIController
             return $this->view->response("El comentario no existe", 404);
         }
     }
+
+    public function getBook($params = null)
+    {
+        $idBook=  $params[":ID"];
+        $book = $this->modelBook->getBook($idBook);
+        if($book){
+            $this->view->response($book, 200);
+        }else{
+            return $this->view->response("El libro no existe", 404);
+        }
+    }
+
 
     private function getBody()
     {
