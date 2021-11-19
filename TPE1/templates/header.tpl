@@ -24,6 +24,7 @@
                 <li class="nav-item active"><a class="nav-link" href="escritores">Escritores</a></li>
                 {if !isset($isLogged) || !$isLogged}
                     <li class="nav-item active"><a class="nav-link" href="admin">Admin</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="register">Registrate</a></li>
                 {/if}
                 {if isset($isLogged) && $isLogged}
                     <li class="nav-item active"><a class="nav-link" href="logout">Logout</a></li>

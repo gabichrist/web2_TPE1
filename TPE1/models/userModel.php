@@ -16,4 +16,10 @@ class UserModel
         $query->execute([$mail]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    function insertUser($nombre, $mail, $clave, $rol)
+    {
+        $query = $this->db->prepare('INSERT INTO usuarios (nombre, mail, clave, rol) values(?,?,?,?)');
+        $query->execute([$nombre, $mail, $clave, $rol]);
+    }
 }

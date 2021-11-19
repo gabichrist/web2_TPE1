@@ -2,7 +2,7 @@
 
 require_once "controllers/bookController.php";
 require_once "controllers/writerController.php";
-require_once "controllers/loginController.php";
+require_once "controllers/userController.php";
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 if (!empty($_GET['action'])) {
@@ -14,7 +14,7 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 $bookController = new BookController();
 $writerController = new WriterController();
-$loginController = new LoginController();
+$userController = new UserController();
 switch ($params[0]) {
     case 'home':
         // case 'libros':
@@ -74,13 +74,19 @@ switch ($params[0]) {
             $writerController->getWriters();
         break;
     case 'admin':
-        $loginController->showLogin();
+        $userController->showLogin();
         break;
     case 'verify':
-        $loginController->verifyLogin();
+        $userController->verifyLogin();
         break;
     case 'logout':
-        $loginController->logout();
+        $userController->logout();
+        break;
+    case 'verify-register':
+        $userController->registerUser();
+        break;
+    case 'register':
+        $userController->showRegister();
         break;
     default:
         echo ('404 Page not found');
