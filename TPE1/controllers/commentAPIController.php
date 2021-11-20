@@ -2,6 +2,7 @@
 
 require_once "models/commentModel.php";
 require_once "views/apiView.php";
+require_once "models/bookModel.php";
 
 class commentAPIController
 {

@@ -16,11 +16,13 @@ class commentModel{
     }
 
     function getCommentsByBook($idBook){
-        $query = $this->db->prepare("SELECT * FROM comentarios AS a INNER JOIN libros AS b ON a.id_libro = b.id_libro WHERE b.id_libro = ? ");
+        $query = $this->db->prepare("SELECT * FROM comentarios AS a INNER JOIN usuarios AS b ON a.id_usuario = b.id_usuario WHERE a.id_libro = ? ");
         $query->execute([$idBook]);
         $comments =$query->fetchAll(PDO::FETCH_OBJ);
         return $comments;
     }
+
+
 
     function addCommentBook($comentario, $puntuacion, $id_usuario, $id_libro){
         $query = $this->db->prepare("INSERT INTO comentarios(comentario, puntuacion, id_usuario, id_libro) VALUES (?,?,?,?)");

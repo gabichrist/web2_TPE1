@@ -8,8 +8,8 @@ require_once('./controllers/commentAPIController.php');
 $router = new Router();
 
 // CAMBIAR TABLA DE ROUTEO
-$router->addRoute('comments/libros/:ID', 'GET', 'commentAPIController', 'getCommentsByBook');
-$router->addRoute('libros/:ID/comments', 'POST', 'commentAPIController', 'addCommentBook');
-$router->addRoute('libros/:ID/comments/:ID', 'DELETE', 'commentAPIController', 'deleteComment');
+$router->addRoute('libros/detalle/:ID', 'GET', 'commentAPIController', 'getCommentsByBook');
+$router->addRoute('libros/detalle/:ID/comments', 'POST', 'commentAPIController', 'addCommentBook');
+$router->addRoute('libros/detalle/:ID/comments/:ID', 'DELETE', 'commentAPIController', 'deleteComment');
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
