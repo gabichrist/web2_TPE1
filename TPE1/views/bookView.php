@@ -20,11 +20,12 @@ class bookView
     }
 
 
-    public function showBooks($books, $writers)
+    public function showBooks($books, $writers, $cantidadPag)
     {
         $this->smarty->assign('title', 'Lista de Libros');
         $this->smarty->assign('writers', $writers);
         $this->smarty->assign('books', $books);
+        $this->smarty->assign('cantidadPag', $cantidadPag);
         $this->smarty->display('templates/bookList.tpl');
     }
 

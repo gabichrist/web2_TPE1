@@ -20,9 +20,23 @@ class BookController
 
     public function getBooks()
     {
-        $books = $this->model->getBooks();
+        if (isset($_GET['page']))
+            $page = (int) $_GET['page'];
+        else
+            $page = 1;
+        if (isset($_GET['pageSize']))
+            $pageSize = (int) $_GET['pageSize'];
+        else
+            $pageSize = 2;
+
+        if ($page == 1)
+            $offset = 1;
+        else
+            $offset = $pageSize * $page;
+        $books = $this->model->getBooks($offset, $pageSize);
+        $counts = $this->model->countBooks();
         $writerModel = new WriterModel();
-        $this->view->showBooks($books, $writerModel->getWriters());
+        $this->view->showBooks($books, $writerModel->getWriters(), $counts->cantidad / $pageSize);
     }
 
     public function getBook($id)
