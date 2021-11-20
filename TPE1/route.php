@@ -88,6 +88,22 @@ switch ($params[0]) {
     case 'register':
         $userController->showRegister();
         break;
+    case 'usuarios':
+        if (isset($params[1]))
+            switch ($params[1]) {
+                case 'editar':
+                    $userController->editUserForm($params[2]);
+                    break;
+                case 'edit':
+                    $userController->editUser($params[2]);
+                    break;
+                case 'eliminar':
+                    $userController->deleteUser($params[2]);
+                    break;
+            }
+        else
+            $userController->getUsers();
+        break;
     default:
         echo ('404 Page not found');
         break;

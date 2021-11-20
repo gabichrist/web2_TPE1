@@ -13,24 +13,20 @@ class writerView
         $isLogged = $this->authHelper->isLogged();
         $isAdmin = $this->authHelper->isAdmin();
         $this->smarty = new Smarty();
+        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('isLogged', $isLogged);
         $this->smarty->assign('isAdmin', $isAdmin);
     }
 
     public function showWriters($writers)
     {
-        //$isLogged = $this->authHelper->isLogged();
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        //$this->smarty->assign('isLogged', $isLogged);
         $this->smarty->assign('title', 'Lista de Escritores');
         $this->smarty->assign('writers', $writers);
-
         $this->smarty->display('templates/writerList.tpl');
     }
 
     function editWriter($writer)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('id', $writer->id_escritor);
         $this->smarty->assign('nombre', $writer->nombre);
         $this->smarty->assign('apellido', $writer->apellido);

@@ -2,7 +2,7 @@
 
 <div class="container" style="width: 60rem">
     <h2 class="text-uppercase fw-bolder container">{$titulo}</h2>
-    <form action="verify-register" method="POST" style="width: 10rem">
+    <form action="verify-register" method="POST" style="width: 15rem">
         <div class="mb-3">
             <label class="form-label">Nombre</label>
             <input class="form-control" type="text" name="nombre" placeholder="Ingrese su nombre..." />
@@ -15,5 +15,6 @@
         <button class="btn btn-primary" type="submit">Crear cuenta</button>
     </form>
 </div>
+
 
 {include 'templates/footer.tpl'}
