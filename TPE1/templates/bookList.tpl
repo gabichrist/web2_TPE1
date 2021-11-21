@@ -20,37 +20,57 @@
         </li>
         {/foreach}
     </ul>
-    {for $page=1 to $cantidadPag}
-    <div class="col">
-        <img src="https://img.icons8.com/ios/10/000000/{$page}.png" />
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center" id="paginador" data-totalPage="{$cantidadPag}">
+            <!-- <div class="col-1">
+                <button class="btn btn-link"><img
+                        src="https://img.icons8.com/material-rounded/20/000000/chevron-left.png" /></button>
+            </div>
+            {for $page=1 to $cantidadPag}
+            <div class="col-1">
+                <button id="page-{$page}" class="btn btn-link"><img
+                        src="https://img.icons8.com/ios/20/000000/{$page}.png" /></button>
+            </div>
+            {/for}
+            <div class="col-1">
+                <button class="btn btn-link"><img
+                        src="https://img.icons8.com/material-rounded/20/000000/chevron-right.png" /></button>
+            </div>
+
+        </div> -->
+        </div>
+
+
     </div>
-    {/for}
-</div>
 
 
-{if $isLogged && $isAdmin}
-<div class="container" style="width: 60rem">
-    <h2 class="text-primary m-3">Agregar Libro</h2>
-    <form class="mb-3" action="libros/agregar" method="POST" style="width: 30rem">
-        <label class="form-label">Titulo</label>
-        <input class="form-control" name="titulo" placeholder="Título">
-        <label class="form-label">Sinopsis</label>
-        <input class="form-control" name="sinopsis" placeholder="Sinopsis">
-        <label class="form-label">Género</label>
-        <input class="form-control" name="genero" placeholder="Genero">
-        <label class="form-label">Año</label>
-        <input class="form-control" name="anio" type="number" placeholder="Año">
-        <label class="form-label" for="escritor">Escritor</label>
-        <select class="form-select" name="escritor">
-            {foreach from=$writers item=$writer}
-            <option value="{$writer->id_escritor}">{$writer->nombre}, {$writer->apellido} </option>
-            {/foreach}
-        </select>
+    {if $isLogged && $isAdmin}
+    <div class="container" style="width: 60rem">
+        <h2 class="text-primary m-3">Agregar Libro</h2>
+        <form class="mb-3" action="libros/agregar" method="POST" style="width: 30rem">
+            <label class="form-label">Titulo</label>
+            <input class="form-control" name="titulo" placeholder="Título">
+            <label class="form-label">Sinopsis</label>
+            <input class="form-control" name="sinopsis" placeholder="Sinopsis">
+            <label class="form-label">Género</label>
+            <input class="form-control" name="genero" placeholder="Genero">
+            <label class="form-label">Año</label>
+            <input class="form-control" name="anio" type="number" placeholder="Año">
+            <label class="form-label" for="escritor">Escritor</label>
+            <select class="form-select" name="escritor">
+                {foreach from=$writers item=$writer}
+                <option value="{$writer->id_escritor}">{$writer->nombre}, {$writer->apellido} </option>
+                {/foreach}
+            </select>
 
-        <button class="btn btn-primary m-2" type="submit">Agregar</button>
+            <button class="btn btn-primary m-2" type="submit">Agregar</button>
 
-    </form>
-</div>
-{/if}
+        </form>
+    </div>
+    {/if}
 
-{include 'templates/footer.tpl'}
+    <script src="js/paginador.js"></script>
+
+
+    {include 'templates/footer.tpl'}
