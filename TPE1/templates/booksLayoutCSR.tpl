@@ -1,6 +1,6 @@
 {include 'templates/header.tpl'}
 
-<div id= "container">
+<div class= "container">
     <h1 id="title" data-book="{$book->id_libro}">{$title}</h1>
 
     <div>

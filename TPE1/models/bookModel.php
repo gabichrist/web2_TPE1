@@ -11,7 +11,6 @@ class bookModel
 
     function getBooks($offset, $limit)
     {
-        echo $offset;
         $query = $this->db->prepare('SELECT l.*, e.nombre, e.apellido FROM libros l JOIN escritores e ON l.id_escritor = e.id_escritor limit ?, ?');
         $query->bindParam(2, $limit, PDO::PARAM_INT);
         $query->bindParam(1, $offset, PDO::PARAM_INT);

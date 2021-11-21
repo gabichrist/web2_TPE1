@@ -17,7 +17,6 @@ $writerController = new WriterController();
 $userController = new UserController();
 switch ($params[0]) {
     case 'home':
-        // case 'libros':
         $bookController->getBooks();
         break;
     case 'libros':
