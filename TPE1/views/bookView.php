@@ -12,26 +12,25 @@ class bookView
     {
         $this->authHelper = new AuthHelper();
         $isLogged = $this->authHelper->isLogged();
+        $isAdmin = $this->authHelper->isAdmin();
         $this->smarty = new Smarty();
+        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('isLogged', $isLogged);
+        $this->smarty->assign('isAdmin', $isAdmin);
     }
 
 
-    public function showBooks($books, $writers)
+    public function showBooks($books, $writers, $cantidadPag)
     {
-        $isLogged = $this->authHelper->isLogged();
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('isLogged', $isLogged);
         $this->smarty->assign('title', 'Lista de Libros');
         $this->smarty->assign('writers', $writers);
         $this->smarty->assign('books', $books);
-
+        $this->smarty->assign('cantidadPag', $cantidadPag);
         $this->smarty->display('templates/bookList.tpl');
     }
 
     public function showBook($book)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('title', 'Información Detallada del Libro');
         $this->smarty->assign('book', $book);
         $this->smarty->display('templates/booksLayoutCSR.tpl');
@@ -39,7 +38,6 @@ class bookView
 
     public function editBook($book)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('id', $book->id_libro);
         $this->smarty->assign('titulo', $book->titulo);
         $this->smarty->assign('sinopsis', $book->sinopsis);
@@ -50,7 +48,6 @@ class bookView
 
     public function showBooksByWriter($books)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('title', 'Lista de Libros');
         $this->smarty->assign('books', $books);
         $this->smarty->display('templates/booksByWriter.tpl');
