@@ -25,11 +25,12 @@ class commentAPIController
     {
         // $this->authHelper->checkLoggedIn();
         $idBook = $params[":ID"];
+        // Chequear que exista ese libro, si no existe devolver 404. 
         $comments =  $this->model->getCommentsByBook($idBook);
         if ($comments) {
             return $this->view->response($comments, 200);
         } else {
-            return $this->view->response("No hay comentarios", 404);
+            return $this->view->response("No hay comentarios", 200);
         }
     }
 
@@ -62,11 +63,11 @@ class commentAPIController
 
     public function getBook($params = null)
     {
-        $idBook=  $params[":ID"];
+        $idBook =  $params[":ID"];
         $book = $this->modelBook->getBook($idBook);
-        if($book){
+        if ($book) {
             $this->view->response($book, 200);
-        }else{
+        } else {
             return $this->view->response("El libro no existe", 404);
         }
     }
