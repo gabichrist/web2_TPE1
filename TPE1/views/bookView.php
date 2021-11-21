@@ -33,7 +33,7 @@ class bookView
     {
         $this->smarty->assign('title', 'Información Detallada del Libro');
         $this->smarty->assign('book', $book);
-        $this->smarty->display('templates/bookDetail.tpl');
+        $this->smarty->display('templates/booksLayoutCSR.tpl');
     }
 
     public function editBook($book)

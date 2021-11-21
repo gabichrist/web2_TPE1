@@ -81,7 +81,6 @@ class BookController
         $this->view->showBooksByWriter($books);
     }
 
-
     public function addBook()
     {
         $this->authHelper->checkLoggedIn();
@@ -93,4 +92,5 @@ class BookController
         $this->model->addBook($titulo, $sinopsis, $genero, $anio, $id_escritor);
         header("Location: " . BASE_URL);
     }
+
 }
