@@ -30,7 +30,7 @@ class BookController
             $pageSize = 2;
 
         if ($page == 1)
-            $offset = 1;
+            $offset = 0;
         else
             $offset = ($pageSize * $page) - 2;
         $books = $this->model->getBooks($offset, $pageSize);

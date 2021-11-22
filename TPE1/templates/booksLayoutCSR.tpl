@@ -9,7 +9,7 @@
         <p>{$book->genero} - {$book->anio}</p>
     </div>
 
-    <div>
+    <div id="comments" data-isLogged="{$isLogged}">
         {include 'vue/coments.tpl'}
     </div>
 </div>

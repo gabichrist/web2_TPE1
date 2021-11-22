@@ -2,18 +2,22 @@
 <div id="appComments">
 
     <h2>Comentarios</h2>
-    <ul>
-        <li v-for="comentario in comentarios">
-            {{comentario.nombre}}{{comentario.apellido}}
-            {{comentario.puntaje}}
-            {{comentario.comentario}}
-            <button class="btn"> <a class="btn btn-danger " href="libros/eliminar/{$book->id_libro}">Eliminar</a>
-            </button>
-        </li>
+    <div style="margin-bottom: 5%;">
+        <ul>
+            <li v-for="comentario in comentarios">
+                {{comentario.nombre}}, {{comentario.mail}} -
+                {{comentario.puntuacion}} -
+                {{comentario.comentario}}
+                <button class="btn"> <a class="btn btn-danger " href="libros/eliminar/{$book->id_libro}">Eliminar</a>
+                </button>
+            </li>
 
-    </ul>
+        </ul>
+    </div>
 
-    <div class="row" style="margin-bottom: 10%;">
+
+    <div class="row" v-if="isLogged" style="margin-bottom: 10%;">
+        <h2>Agregá un comentario</h2>
         <form id="form">
             <label class="form-label">Agrega un comentario</label>
             <input class="form-control" name="comentario" placeholder="Comentario">
@@ -30,7 +34,6 @@
             <button class="btn btn-primary m-2" type="submit">Agregar</button>
         </form>
     </div>
-
 
 
 </div>
