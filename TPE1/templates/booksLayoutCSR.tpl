@@ -1,6 +1,6 @@
 {include 'templates/header.tpl'}
 
-<div id= "container">
+<div id= "container" >
     <h1 id="title" data-book="{$book->id_libro}">{$title}</h1>
 
     <div>
@@ -9,8 +9,8 @@
         <p>{$book->genero} - {$book->anio}</p>
     </div>
 
-    <div>
-        {include 'vue/coments.tpl'}
+    <div id="user" data-user="{$user->id_usuario}">
+        {include 'templates/comments.tpl'}
     </div>
 </div>
 

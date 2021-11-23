@@ -37,4 +37,12 @@ class AuthHelper
         if (isset($_SESSION['ID_USER'])) return true;
         return false;
     }
+
+    public function getUser(){
+        
+        if (!isset($_SESSION))
+            session_start();
+        if (isset($_SESSION['ID_USER'])) 
+            return $_SESSION['ID_USER'];
+    }
 }

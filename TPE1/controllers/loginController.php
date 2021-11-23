@@ -32,6 +32,13 @@ class LoginController
             $this->view->showLogin();
     }
 
+    public function getUser(){
+        $isLogged = $this->authHelper->isLogged();
+        if ($isLogged)
+            $user = $this->authHelper->getUser();
+            $this->view->showUser($user);
+    }
+
     public function verifyLogin()
     {
 

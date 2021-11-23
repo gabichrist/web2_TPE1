@@ -29,7 +29,7 @@ class bookView
         $this->smarty->display('templates/bookList.tpl');
     }
 
-    public function showBook($book)
+    public function showBook($book) 
     {
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('title', 'Información Detallada del Libro');

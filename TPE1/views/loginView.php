@@ -10,11 +10,19 @@ class LoginView
         $smarty->assign('BASE_URL', BASE_URL);
         $smarty->assign('titulo', 'Iniciar Sesión');
         $smarty->assign('error', $error);
+        
         $smarty->display('templates/login.tpl');
+    }
+
+    public function showUser($user){
+        $this->smarty->assign('user', $user);
+        $this->smarty->display('templates/booksLayoutCSR.tpl');
     }
 
     public function showHome()
     {
         header("Location: " . BASE_URL . "home");
     }
+
+
 }

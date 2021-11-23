@@ -16,4 +16,5 @@ class UserModel
         $query->execute([$mail]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
 }

@@ -30,7 +30,7 @@ class commentAPIController
         if ($comments) {
             return $this->view->response($comments, 200);
         } else {
-            return $this->view->response("No hay comentarios", 200);
+            return $this->view->response([], 200);
         }
     }
 
