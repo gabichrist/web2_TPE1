@@ -38,11 +38,14 @@ class AuthHelper
         return false;
     }
 
+
+    //funcion que retorna el id_usuario
     public function getUser(){
         
         if (!isset($_SESSION))
             session_start();
         if (isset($_SESSION['ID_USER'])) 
+
             return $_SESSION['ID_USER'];
     }
 }

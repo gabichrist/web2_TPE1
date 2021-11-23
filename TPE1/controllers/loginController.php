@@ -32,6 +32,8 @@ class LoginController
             $this->view->showLogin();
     }
 
+
+    //traigo del helper el id del user y se lo paso a la view
     public function getUser(){
         $isLogged = $this->authHelper->isLogged();
         if ($isLogged)
@@ -41,7 +43,6 @@ class LoginController
 
     public function verifyLogin()
     {
-
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];

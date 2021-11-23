@@ -14,6 +14,8 @@ class LoginView
         $smarty->display('templates/login.tpl');
     }
 
+
+    //uso el id user en el template 
     public function showUser($user){
         $this->smarty->assign('user', $user);
         $this->smarty->display('templates/booksLayoutCSR.tpl');
@@ -23,6 +25,4 @@ class LoginView
     {
         header("Location: " . BASE_URL . "home");
     }
-
-
 }

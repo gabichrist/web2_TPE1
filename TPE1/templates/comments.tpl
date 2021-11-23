@@ -10,7 +10,7 @@
     <input class="form-control" type= "text" name="comentario" value="" id="comentario" placeholder="Escriba aqui" required>
     <label class="form-label">¿Cuantos puntos le das?</label>
 
-    <select id="puntaje" class="form-select form-select-sm" aria-label=".form-select-sm example">
+    <select id="puntaje" class="form-select form-select-sm" size="5" aria-label=".form-select-sm size 5 example">
         <option selected>Puntos</option>
         <option value="1" name="puntos">1</option>
         <option value="2" name="puntos">2</option>
