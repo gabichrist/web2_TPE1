@@ -47,4 +47,13 @@ class AuthHelper
             return $_SESSION['ROL'] == 'admin';
         return false;
     }
+
+    public function getUserId()
+    {
+
+        if (!isset($_SESSION))
+            session_start();
+        if (isset($_SESSION['ID_USER']))
+            return $_SESSION['ID_USER'];
+    }
 }

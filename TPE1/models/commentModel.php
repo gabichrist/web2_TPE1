@@ -11,7 +11,7 @@ class commentModel
 
     function getComment($idComment)
     {
-        $query = $this->db->prepare("SELECT FROM comentarios WHERE id = ? ");
+        $query = $this->db->prepare("SELECT * FROM comentarios WHERE id_comentario = ? ");
         $query->execute([$idComment]);
         $comment = $query->fetch(PDO::FETCH_OBJ);
         return $comment;
@@ -37,7 +37,7 @@ class commentModel
 
     function deleteComment($idComment)
     {
-        $query = $this->db->prepare("DELETE FROM comentarios WHERE id = ?");
+        $query = $this->db->prepare("DELETE FROM comentarios WHERE id_comentario = ?");
         $query->execute([$idComment]);
     }
 }
