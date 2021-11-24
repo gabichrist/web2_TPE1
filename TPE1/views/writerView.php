@@ -16,12 +16,13 @@ class writerView
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('isLogged', $isLogged);
         $this->smarty->assign('isAdmin', $isAdmin);
+        $this->smarty->assign('title', 'Lista de Escritores');
     }
 
-    public function showWriters($writers)
+    public function showWriters($writers, $error = '')
     {
-        $this->smarty->assign('title', 'Lista de Escritores');
         $this->smarty->assign('writers', $writers);
+        $this->smarty->assign('error', $error);
         $this->smarty->display('templates/writerList.tpl');
     }
 

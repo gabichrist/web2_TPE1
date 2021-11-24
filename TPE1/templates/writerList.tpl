@@ -35,7 +35,12 @@
      <button class="btn btn-primary m-2" type="submit">Agregar</button>
 
         </form>
+        {if isset($error)}
+        <p>{$error}</p>
+        {/if}
 </div>
+
+
 {/if}
 
 {include 'templates/footer.tpl'}

@@ -10,12 +10,14 @@ class BookController
     private $model;
     private $view;
     private $authHelper;
+    private $writerModel;
 
     public function __construct()
     {
         $this->authHelper = new AuthHelper();
         $this->model = new bookModel();
         $this->view = new bookView();
+        $this->writerModel = new writerModel();
     }
 
     public function getBooks()
@@ -42,22 +44,27 @@ class BookController
     public function getBook($id)
     {
         $book = $this->model->getBook($id);
-        $this->view->showBook($book);
+        if (isset($book))
+            $this->view->showBook($book);
     }
 
     public function editBook($id)
     {
         $this->authHelper->checkLoggedIn();
+        $isAdmin = $this->authHelper->isAdmin();
         if (
-            isset($_POST['titulo']) && isset($_POST['sinopsis']) && isset($_POST['genero'])
-            && isset($_POST['anio'])
+            isset($_POST['titulo']) && !empty($_POST['titulo']) && isset($_POST['sinopsis']) && !empty($_POST['sinopsis'])
+            && isset($_POST['genero']) && !empty($_POST['titulo']) && isset($_POST['anio']) && !empty($_POST['anio'])
         ) {
-            $titulo = $_POST['titulo'];
-            $sinopsis = $_POST['sinopsis'];
-            $genero = $_POST['genero'];
-            $anio = $_POST['anio'];
-            $this->model->editBook($id, $titulo, $sinopsis, $genero, $anio);
+            if ($isAdmin) {
+                $titulo = $_POST['titulo'];
+                $sinopsis = $_POST['sinopsis'];
+                $genero = $_POST['genero'];
+                $anio = $_POST['anio'];
+                $this->model->editBook($id, $titulo, $sinopsis, $genero, $anio);
+            }
         }
+        header("Location: " . BASE_URL);
     }
 
     public function editBookForm($id)
@@ -70,26 +77,44 @@ class BookController
     public function deleteBook($id)
     {
         $this->authHelper->checkLoggedIn();
-        $this->model->deleteBook($id);
-        header("Location: " . BASE_URL);
+        $isAdmin = $this->authHelper->isAdmin();
+        if ($isAdmin) {
+            $this->model->deleteBook($id);
+            header("Location: " . BASE_URL);
+        }
     }
 
 
     function getBooksbyWriter($id_escritor)
     {
-        $books = $this->model->getBooksbyWriter($id_escritor);
-        $this->view->showBooksByWriter($books);
+        if (isset($id_escritor) && !empty($id_escritor)) {
+            $writer = $this->writerModel->getWriter($id_escritor);
+            if (isset($writer) && !empty($writer)) {
+                $books = $this->model->getBooksbyWriter($id_escritor);
+                $this->view->showBooksByWriter($books);
+            }
+        }
     }
 
     public function addBook()
     {
         $this->authHelper->checkLoggedIn();
-        $titulo = $_POST['titulo'];
-        $sinopsis = $_POST['sinopsis'];
-        $genero = $_POST['genero'];
-        $anio = $_POST['anio'];
-        $id_escritor = $_POST['escritor'];
-        $this->model->addBook($titulo, $sinopsis, $genero, $anio, $id_escritor);
-        header("Location: " . BASE_URL);
+        $isAdmin = $this->authHelper->isAdmin();
+        if (
+            isset($_POST['titulo']) && !empty($_POST['titulo']) && isset($_POST['sinopsis']) && !empty($_POST['sinopsis'])
+            && isset($_POST['genero']) && !empty($_POST['titulo']) && isset($_POST['anio']) && !empty($_POST['anio'])
+        ) {
+            if ($isAdmin) {
+                $titulo = $_POST['titulo'];
+                $sinopsis = $_POST['sinopsis'];
+                $genero = $_POST['genero'];
+                $anio = $_POST['anio'];
+                $id_escritor = $_POST['escritor'];
+                $this->model->addBook($titulo, $sinopsis, $genero, $anio, $id_escritor);
+                header("Location: " . BASE_URL);
+            }
+        } else {
+            header("Location: " . BASE_URL);
+        }
     }
 }
