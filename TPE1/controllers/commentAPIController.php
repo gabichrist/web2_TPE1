@@ -27,7 +27,6 @@ class commentAPIController
         $idBook = $params[":ID"];
         $orderBy = null;
         $order = null;
-        // Chequear que exista ese libro, si no existe devolver 404. 
         $book = $this->modelBook->getBook($idBook);
         if (isset($book)) {
             if (isset($_GET['orderBy']) && ($_GET['orderBy'] == 'puntuacion' || $_GET['orderBy'] == 'fecha_creacion')) {
