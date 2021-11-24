@@ -30,9 +30,9 @@ class BookController
             $pageSize = 2;
 
         if ($page == 1)
-            $offset = 1;
+            $offset = 0;
         else
-            $offset = $pageSize * $page;
+            $offset = ($pageSize * $page) - 2;
         $books = $this->model->getBooks($offset, $pageSize);
         $counts = $this->model->countBooks();
         $writerModel = new WriterModel();
@@ -92,5 +92,4 @@ class BookController
         $this->model->addBook($titulo, $sinopsis, $genero, $anio, $id_escritor);
         header("Location: " . BASE_URL);
     }
-
 }

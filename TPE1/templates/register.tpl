@@ -1,8 +1,8 @@
 {include 'templates/header.tpl'}
 
-<div class="container" style="width: 60rem">
+<div class="container" style="width: 70rem">
     <h2 class="text-uppercase fw-bolder container">{$titulo}</h2>
-    <form action="verify-register" method="POST" style="width: 15rem">
+    <form action="verify-register" method="POST" style="width: 30rem">
         <div class="mb-3">
             <label class="form-label">Nombre</label>
             <input class="form-control" type="text" name="nombre" placeholder="Ingrese su nombre..." />
